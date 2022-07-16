@@ -1,4 +1,8 @@
+import 'package:anime_store/view/fristPage.dart';
+import 'package:anime_store/view/home.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,29 +11,34 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: const MyHomePage(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Anime Store',
+      home: AnimatedSplashScreen(
+        backgroundColor: Color(121315),
+        duration: 3000,
+        splashIconSize: 400,
+        splash: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 150,
+              width: 150,
+              child: Image(
+                image: AssetImage("assets/images/icon.png"),
+              ),
+            ),
+          ],
+        ),
+        nextScreen: home(),
+        splashTransition: SplashTransition.fadeTransition,
+      ),
+      getPages: [
+        GetPage(name: "/home", page: () => home()),
+        GetPage(name: "/frist", page: () => fristPage()),
+      ],
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-return Scaffold();
-  
   }
 }
