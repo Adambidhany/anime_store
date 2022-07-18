@@ -1,5 +1,7 @@
-import 'package:anime_store/view/fristPage.dart';
-import 'package:anime_store/view/home.dart';
+import 'package:anime_store/data/datasource/static/appColor.dart';
+import 'package:anime_store/view/screen/fristPage.dart';
+import 'package:anime_store/view/screen/home.dart';
+import 'package:anime_store/view/screen/logIn.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:get/get.dart';
@@ -16,8 +18,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Anime Store',
-      home: AnimatedSplashScreen(
-        backgroundColor: Color(121315),
+
+      theme: ThemeData(
+          backgroundColor: appColor.darkbackground,
+          scaffoldBackgroundColor: appColor.darkbackground),
+      home: 
+      AnimatedSplashScreen(
+        backgroundColor: appColor.darkbackground,
         duration: 3000,
         splashIconSize: 400,
         splash: Column(
@@ -32,12 +39,13 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
-        nextScreen: home(),
+        nextScreen: fristPage(),
         splashTransition: SplashTransition.fadeTransition,
       ),
       getPages: [
         GetPage(name: "/home", page: () => home()),
         GetPage(name: "/frist", page: () => fristPage()),
+        GetPage(name: "/logIn", page: () => logIn()),
       ],
     );
   }

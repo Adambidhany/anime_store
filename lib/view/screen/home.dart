@@ -1,8 +1,6 @@
 import 'package:anime_store/controller/homeController.dart';
-import 'package:anime_store/view/fristPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 
 class home extends StatelessWidget {
   const home({Key? key}) : super(key: key);
